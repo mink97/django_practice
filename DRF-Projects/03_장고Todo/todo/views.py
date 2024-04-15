@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Todo
+from .forms import TodoForm
 
 # Create your views here.
 def todo_list(request):
@@ -11,7 +12,7 @@ def todo_detail(request, pk):
     return render(request, 'todo/todo_detail.html', {'todo': todo})
 
 def todo_post(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = TodoForm(request.POST)
         if form.is_valid():
             todo = form.save(commit=False)
