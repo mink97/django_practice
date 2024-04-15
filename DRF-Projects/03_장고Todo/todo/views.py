@@ -32,3 +32,13 @@ def todo_edit(request, pk):
     else:
         form = TodoForm(instance=todo)
     return render(request, 'todo/todo_post.html', {'form': form})
+
+def done_list(request):
+    todos = Todo.objects.filter(complete=True)
+    return render(request, 'todo/done_list.html', {'dones': todos})
+
+def todo_done(request, pk):
+    todo = Todo.objects.get(id=pk)
+    todo.complete = True
+    todo.save()
+    return redirect('todo_list')
