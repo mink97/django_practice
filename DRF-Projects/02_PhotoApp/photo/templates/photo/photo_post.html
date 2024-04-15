@@ -4,15 +4,15 @@
     </head>
     <body>
         <h1><a href="/">홈으로 돌아가기</a></h1>
-        <div>
-            <section>
+        <section>
+            <div>
                 <h2>New Photo</h2>
                 <form method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit">Upload</button>
                 </form>
-            </section>
-        </div>
+            </div>
+        </section>
     </body>
 </html>
