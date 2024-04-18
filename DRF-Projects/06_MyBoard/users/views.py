@@ -4,6 +4,7 @@ from rest_framework.response import Response
 
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer
 from .models import Profile
+from .permissions import CustomReadOnly
 
 # Create your views here.
 class RegisterView(generics.CreateAPIView): # CreateAPIView를 상속받아서 사용자 생성 뷰 생성
@@ -24,3 +25,4 @@ class LoginView(generics.GenericAPIView): # 모델에 영향 x, 기본 제공되
 class ProfileView(generics.RetrieveUpdateAPIView): # 가져오기 기능 + 수정 기능
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    permission_classes = [CustomReadOnly] # CustomReadOnly 클래스를 사용하여 권한 설정
