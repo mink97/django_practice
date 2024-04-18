@@ -45,7 +45,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True, write_only=True)
-        # write_only=True로 설정하여 응답에 비밀번호가 포함되지 않도록 설정(역직렬화는 가능, 직렬화는 불가능)
+        # write_only=True로 설정하여 응답에 비밀번호가 포함되지 않도록 설정(클라->서버 역직렬화는 가능, 직렬화는 불가능)
 
     def validate(self, data):
         user = authenticate(**data)
